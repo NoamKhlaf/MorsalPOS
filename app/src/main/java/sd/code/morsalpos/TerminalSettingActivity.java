@@ -33,7 +33,6 @@ public class TerminalSettingActivity extends AppCompatActivity {
         setTermId = (Button) findViewById(R.id.btn_setTerm);
         termID = (EditText) findViewById(R.id.termID);
         merchantId = (EditText) findViewById(R.id.merchant_id);
-
         final ConfigBean configBean = db.getConfigByParam("terminalID");
         if (configBean.getParam() != null) {
             setTermId.setText(getResources().getString(R.string.update_terminal));
@@ -83,7 +82,7 @@ public class TerminalSettingActivity extends AppCompatActivity {
                         if (res != -1) {
                             Toast.makeText(getApplicationContext(), "Terminal ID Updated Successfully", Toast.LENGTH_LONG).show();
                             finish();
-                            Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                         }
                     } else {

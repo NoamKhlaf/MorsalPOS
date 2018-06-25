@@ -164,6 +164,7 @@ public class MiniStatementActivity extends AppCompatActivity {
                     dialog.setCancelable(false);
                     dialog.show();
                     CallUrl callUrl = new CallUrl(Config.URL_MINI_STATMENT, new JSONObject(map)) {
+
                         @Override
                         public void afterRequest(JSONObject response) {
                             dialog.dismiss();
@@ -181,6 +182,7 @@ public class MiniStatementActivity extends AppCompatActivity {
                                 String approvalCode = response.getString("approvalCode");
 
                                 miniStatementRecords = response.getJSONArray("miniStatementRecords");
+
                                 resMap.put("time", tradeTime);
                                 resMap.put("date", tradeDate);
 
@@ -191,9 +193,10 @@ public class MiniStatementActivity extends AppCompatActivity {
                                 resMap.put("approvalCode", approvalCode);
                                 resMap.put("systemTraceAuditNumber", systemTraceAuditNumber);
                                 resMap.put("responseStatus", responseStatus);
-
+                                Log.d("noam", "resMap: " +response.toString());
                             } catch (JSONException e) {
                                 e.printStackTrace();
+
                             }
 
                             new Thread(new Runnable() {
@@ -207,7 +210,7 @@ public class MiniStatementActivity extends AppCompatActivity {
 
                         @Override
                         public void onError(VolleyError error) {
-//                            Log.e(TAG, "Error: "+error.networkResponse.data);
+                            Log.e("wow", "Error: "+error.networkResponse.data);
                             // parse a json error...
                             dialog.dismiss();
                             new PromptDialog(MiniStatementActivity.this)
@@ -225,6 +228,8 @@ public class MiniStatementActivity extends AppCompatActivity {
                         }
                     };
                     callUrl.execute();
+                  //  Log.d("response", "Response: " + Config.URL_MINI_STATMENT, new JSONObject(map)));
+
                 } else {
                     cancel = false;
                 }

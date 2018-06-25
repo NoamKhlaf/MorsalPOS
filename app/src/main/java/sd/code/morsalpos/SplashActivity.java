@@ -146,7 +146,7 @@ public class SplashActivity extends AppCompatActivity {
                             Log.e("alaa", workingKeyObj.get("workingKey").toString());
 
 
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            Intent intent = new Intent(SplashActivity.this, TerminalSettingActivity.class);
                             startActivity(intent);
                             finish();
                         }

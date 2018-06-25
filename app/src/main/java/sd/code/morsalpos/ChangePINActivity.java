@@ -195,7 +195,6 @@ public class ChangePINActivity extends AppCompatActivity{
                     Date now = new Date();
                     map.put("tranDateTime", format.format(now));
                     map.put("systemTraceAuditNumber", String.valueOf(Security.getSystemTraceAuditNumber()));
-
                     Log.d(TAG, "Map: " + map.toString());
                     final ProgressDialog dialog = new ProgressDialog(ChangePINActivity.this, R.style.AppTheme_Dark_Dialog);
                     dialog.setMessage("Running...");
@@ -236,6 +235,8 @@ public class ChangePINActivity extends AppCompatActivity{
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                Toast.makeText(getApplicationContext() , "Map" +e.toString(),Toast.LENGTH_LONG).show();
+
                             }
                             new PromptDialog(ChangePINActivity.this)
                                     .setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
