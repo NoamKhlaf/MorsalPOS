@@ -40,11 +40,15 @@ public class PrintExampleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                MagCardApi.MagOpen_Api();
-                MagCardApi.MagReset_Api();
-                PiccApi.PiccOpen_Api();
+                try{
+                    MagCardApi.MagOpen_Api();
+                    MagCardApi.MagReset_Api();
+                    PiccApi.PiccOpen_Api();
 
-                PrtCardInfo();
+                    PrtCardInfo();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
 
 
             }

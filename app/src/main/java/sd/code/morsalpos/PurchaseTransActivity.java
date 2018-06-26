@@ -104,9 +104,13 @@ public class PurchaseTransActivity extends AppCompatActivity {
         String CurDir = getApplicationContext().getFilesDir().getAbsolutePath();
         SystemApi.SystemInit_Api(0, CommonConvert.StringToBytes(CurDir + "/" + "\0"), PurchaseTransActivity.this);
 
-        MagCardApi.MagOpen_Api();
-        MagCardApi.MagReset_Api();
-        PiccApi.PiccOpen_Api();
+        try{
+            MagCardApi.MagOpen_Api();
+            MagCardApi.MagReset_Api();
+            PiccApi.PiccOpen_Api();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         sumbit = (Button) findViewById(R.id.btn_pay);
         btnPrint = (Button) findViewById(R.id.btn_print);
@@ -174,11 +178,16 @@ public class PurchaseTransActivity extends AppCompatActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MagCardApi.MagOpen_Api();
-                MagCardApi.MagReset_Api();
-                PiccApi.PiccOpen_Api();
+                try{
+                    MagCardApi.MagOpen_Api();
+                    MagCardApi.MagReset_Api();
+                    PiccApi.PiccOpen_Api();
 
-                PrtCardInfo();
+                    PrtCardInfo();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
 
         });

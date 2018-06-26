@@ -104,9 +104,13 @@ public class MiniStatementActivity extends AppCompatActivity {
         String CurDir = getApplicationContext().getFilesDir().getAbsolutePath();
         SystemApi.SystemInit_Api(0, CommonConvert.StringToBytes(CurDir + "/" + "\0"), MiniStatementActivity.this);
 
-        MagCardApi.MagOpen_Api();
-        MagCardApi.MagReset_Api();
-        PiccApi.PiccOpen_Api();
+        try{
+            MagCardApi.MagOpen_Api();
+            MagCardApi.MagReset_Api();
+            PiccApi.PiccOpen_Api();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         pan = (EditText) findViewById(R.id.pan);
         sumbit = (Button) findViewById(R.id.btn_get);

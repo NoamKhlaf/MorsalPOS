@@ -104,9 +104,13 @@ public class TransferAccountActivity extends AppCompatActivity {
         String CurDir = getApplicationContext().getFilesDir().getAbsolutePath();
         SystemApi.SystemInit_Api(0, CommonConvert.StringToBytes(CurDir + "/" + "\0"), TransferAccountActivity.this);
 
-        MagCardApi.MagOpen_Api();
-        MagCardApi.MagReset_Api();
-        PiccApi.PiccOpen_Api();
+        try{
+            MagCardApi.MagOpen_Api();
+            MagCardApi.MagReset_Api();
+            PiccApi.PiccOpen_Api();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         sumbit = (Button) findViewById(R.id.btn_pay);
 

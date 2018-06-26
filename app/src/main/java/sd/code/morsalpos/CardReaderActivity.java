@@ -49,9 +49,13 @@ public class CardReaderActivity extends AppCompatActivity {
 
         initHandler();
 
-        MagCardApi.MagOpen_Api();
-        MagCardApi.MagReset_Api();
-        PiccApi.PiccOpen_Api();
+        try{
+            MagCardApi.MagOpen_Api();
+            MagCardApi.MagReset_Api();
+            PiccApi.PiccOpen_Api();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         new Thread() {
             public void run() {
